@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Uzma Ahmed — Full-Stack &amp; Agentic AI Developer</title>
+<meta name="description" content="Portfolio of Uzma Ahmed — Full-Stack Developer, Agentic AI Developer and AI Automation Developer building web products and autonomous agent systems." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F8F9FC;
+  --bg-alt: #F1F3F8;
+
+  --surface: #FFFFFF;
+  --surface-2: #F5F7FB;
+
+  --border: #E3E7EF;
+
+  --text: #151827;
+  --text-dim: #62697A;
+  --text-faint: #9AA1B2;
+
+  --accent: #6D5DFB;
+  --accent-dark: #5747E8;
+
+  --accent-soft: rgba(109, 93, 251, 0.08);
+  --accent-light: rgba(109, 93, 251, 0.14);
+
+  --secondary: #8B7CFF;
+  --secondary-soft: rgba(139, 124, 255, 0.10);
+
+  --success: #18A978;
+  --amber: #E9A23B;
+
+  --font-display: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --maxw: 1120px;
+}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    background:linear-gradient(180deg, #F9FAFB 0%, #F3F4F6 50%, #EEF2F5 100%);
+    background-attachment:fixed;
+    color:var(--text);
+    font-family:var(--font-body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+    display:flex;align-items:center;gap:9px;
+    font-weight:600;
+  }
+  .eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px rgba(37,99,235,.5);}
+  h1,h2,h3{font-family:var(--font-display);font-weight:600;letter-spacing:-0.01em;color:var(--text);}
+  h2{font-size:clamp(28px,3.4vw,42px);line-height:1.1;}
+  h3{font-size:18px;}
+  section{position:relative;}
+
+  /* ===== signal rail (signature element) ===== */
+  .rail{
+    position:fixed;
+    left:calc(50% - var(--maxw)/2 - 34px);
+    top:0;
+    bottom:0;
+    width:2px;
+    background:linear-gradient(to bottom, transparent, rgba(37,99,235,.15) 8%, rgba(37,99,235,.15) 92%, transparent);
+    z-index:1;
+    pointer-events:none;
+  }
+  @media (max-width:1220px){ .rail{display:none;} }
+  .rail .node{
+    position:absolute;left:50%;transform:translateX(-50%);
+    width:9px;height:9px;border-radius:50%;
+    background:var(--bg-alt);
+    border:2px solid var(--text-faint);
+    transition:border-color .4s ease, box-shadow .4s ease, background .4s ease;
+  }
+  .rail .node.active{
+    border-color:var(--accent);
+    background:var(--accent);
+    box-shadow:0 0 16px 4px var(--accent-light);
+  }
+  .rail .pulse{
+    position:absolute;left:50%;top:0;transform:translateX(-50%);
+    width:2px;height:70px;
+    background:linear-gradient(to bottom, transparent, var(--accent), transparent);
+    opacity:.65;
+    animation:railflow 4.5s linear infinite;
+  }
+  @keyframes railflow{
+    0%{top:-10%;}
+    100%{top:110%;}
+  }
+
+  /* ===== nav ===== */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    background:linear-gradient(180deg, rgba(249,250,251,.98) 0%, rgba(249,250,251,.95) 100%);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+  }
+  nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 28px;max-width:var(--maxw);margin:0 auto;
+  }
+  .logo{
+    font-family:var(--font-mono);font-size:15px;color:var(--text);
+    display:flex;align-items:center;gap:9px;
+  }
+  .logo .dot{color:var(--accent);}
+  .logo-mark{flex-shrink:0;}
+  .navlinks{display:flex;gap:32px;font-size:14px;color:var(--text);font-weight:500;}
+  .navlinks a{transition:color .2s;}
+  .navlinks a:hover{color:var(--accent);}
+  .nav-cta{
+    font-family:var(--font-mono);font-size:13px;font-weight:500;
+    border:1.5px solid var(--accent);
+    padding:9px 18px;border-radius:6px;
+    color:var(--accent);transition:all .25s ease;background:transparent;
+  }
+  .nav-cta:hover{background:var(--accent);color:#FFFFFF;box-shadow:0 4px 12px rgba(37,99,235,.25);}
+  .navtoggle{display:none;background:none;border:none;color:var(--text);font-size:22px;cursor:pointer;}
+  @media (max-width:760px){
+    .navlinks{display:none;}
+    .navtoggle{display:block;}
+  }
+
+  /* hero ===== */
+  .hero{
+    padding:168px 0 110px;
+    display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;
+    position:relative;
+  }
+  .hero::before{
+    content:'';
+    position:absolute;
+    top:0;left:0;right:0;bottom:0;
+    background:linear-gradient(135deg, rgba(37,99,235,.05) 0%, rgba(59,130,246,.03) 100%);
+    z-index:-1;
+    border-radius:32px;
+  }
+  @media (max-width:900px){ .hero{grid-template-columns:1fr;padding:140px 0 60px;} }
+  .hero h1{
+    font-size:clamp(48px,7vw,72px);
+    line-height:1.05;
+    margin:20px 0 18px;
+    color:var(--text);
+    font-weight:700;
+    letter-spacing:-0.02em;    font-family:'Poppins',sans-serif;
+    font-weight:800;  }
+  .hero h1 .accent{color:var(--accent);}
+  .role-line{
+    font-family:var(--font-mono);
+    font-size:clamp(14px,2vw,17px);
+    color:var(--accent);
+    min-height:24px;
+    margin-bottom:24px;
+    font-weight:600;
+    letter-spacing:0.5px;
+  }
+  .role-line .cursor{color:var(--accent);animation:blink 1s step-end infinite;}
+  @keyframes blink{50%{opacity:0;}}
+  .hero p.lede{
+    font-size:18px;color:var(--text-dim);max-width:55ch;margin-bottom:36px;line-height:1.8;font-weight:400;
+  }
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    font-family:var(--font-mono);font-size:13.5px;
+    padding:13px 22px;border-radius:7px;
+    display:inline-flex;align-items:center;gap:8px;
+    transition:all .25s ease;
+    font-weight:500;
+  }
+  .btn-primary{background:var(--accent);color:#FFFFFF;}
+  .btn-primary:hover{background:var(--accent-dim);transform:translateY(-2px);box-shadow:0 8px 16px rgba(37,99,235,.3);}
+  .btn-ghost{border:1px solid var(--border);color:var(--text);}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);}
+
+  /* hero photo: framed portrait with signal accents */
+  .hero-photo{position:relative;height:420px;display:flex;align-items:center;justify-content:center;}
+  .hero-photo .frame{
+    position:relative;width:100%;max-width:340px;aspect-ratio:1/1.3;
+    border-radius:18px;overflow:hidden;
+    border:1px solid var(--border);
+    background:var(--surface);
+    box-shadow:0 20px 50px rgba(0,0,0,.1);
+  }
+  .hero-photo .frame::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg, transparent 55%, rgba(10,15,20,.55));
+    pointer-events:none;
+  }
+  .hero-photo img{
+    width:100%;height:100%;object-fit:cover;object-position:center;
+    filter:saturate(1.02) contrast(1.03);
+  }
+  .hero-photo .glow{
+    position:absolute;inset:-20px;border-radius:26px;
+    background:radial-gradient(closest-side, var(--accent-light), transparent 70%);
+    filter:blur(8px);z-index:-1;
+  }
+  .corner{position:absolute;width:24px;height:24px;border-color:var(--accent);opacity:.6;}
+  .corner.tl{top:-1px;left:-1px;border-top:2px solid;border-left:2px solid;border-top-left-radius:6px;}
+  .corner.br{bottom:-1px;right:-1px;border-bottom:2px solid;border-right:2px solid;border-bottom-right-radius:6px;}
+  .hero-photo .tag-chip{
+    position:absolute;bottom:18px;left:18px;
+    font-family:var(--font-mono);font-size:11px;color:var(--text);
+    background:rgba(255,255,255,.95);backdrop-filter:blur(8px);
+    border:1px solid rgba(229,231,235,.5);border-radius:20px;
+    padding:7px 14px;display:flex;align-items:center;gap:8px;
+    box-shadow:0 8px 24px rgba(0,0,0,.12);
+    font-weight:500;
+  }
+  .hero-photo .tag-chip::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);}
+
+  /* ===== section heads ===== */
+  section.pad{padding:100px 0;}
+  section.pad + section.pad{border-top:1px solid rgba(229,231,235,.6);}
+  
+  .sec-head{margin-bottom:56px;max-width:680px;}
+  .sec-head h2{font-size:clamp(28px,3.4vw,42px);margin-top:16px;}
+  .sec-head p{color:var(--text-dim);margin-top:14px;font-size:16px;line-height:1.7;}
+
+  /* ===== about ===== */
+  .about-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:start;}
+  @media (max-width:860px){ .about-grid{grid-template-columns:1fr;} }
+  .about-bio p{color:var(--text-dim);font-size:16px;margin-bottom:16px;}
+  .about-bio p strong{color:var(--text);font-weight:500;}
+  .capabilities{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+  .cap{background:var(--bg);padding:24px 26px;display:flex;gap:18px;align-items:flex-start;transition:background .2s;}
+  .cap:hover{background:var(--surface);}
+  .cap .idx{font-family:var(--font-mono);font-size:12px;color:var(--accent);padding-top:3px;font-weight:600;}
+  .cap h3{font-size:16px;margin-bottom:6px;color:var(--text);}
+  .cap p{font-size:14px;color:var(--text-dim);}
+
+  /* ===== skills ===== */
+  .skill-groups{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  @media (max-width:860px){ .skill-groups{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:520px){ .skill-groups{grid-template-columns:1fr;} }
+  .skill-card{border:1px solid var(--border);border-radius:10px;padding:22px;background:var(--bg);}
+  .skill-card .label{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);margin-bottom:14px;}
+  .tag-list{display:flex;flex-wrap:wrap;gap:8px;}
+  .tag{
+    font-family:var(--font-mono);font-size:12.5px;color:var(--text-dim);
+    border:1px solid var(--border);padding:6px 12px;border-radius:6px;
+    transition:all .2s;background:var(--surface);
+  }
+  .tag:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);}
+
+  /* ===== projects ===== */
+  .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+  @media (max-width:760px){ .proj-grid{grid-template-columns:1fr;} }
+  .proj-card{
+    border:1px solid var(--border);border-radius:12px;background:var(--bg);
+    padding:28px;display:flex;flex-direction:column;gap:16px;
+    transition:all .3s ease;
+    box-shadow:0 1px 3px rgba(0,0,0,.05);
+  }
+  .proj-card:hover{border-color:var(--accent);box-shadow:0 10px 30px rgba(37,99,235,.12);transform:translateY(-4px);}
+  .proj-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+  .proj-card h3{font-size:19px;}
+  .proj-tag{font-family:var(--font-mono);font-size:10.5px;color:var(--accent);border:1px solid var(--accent-dim);padding:4px 9px;border-radius:20px;white-space:nowrap;}
+  .proj-card p{color:var(--text-dim);font-size:14.5px;flex:1;}
+  .proj-stack{display:flex;flex-wrap:wrap;gap:7px;}
+  .proj-stack span{font-family:var(--font-mono);font-size:11px;color:var(--text-faint);}
+  .proj-links{display:flex;gap:18px;margin-top:4px;}
+  .proj-links a{font-family:var(--font-mono);font-size:12.5px;color:var(--text-dim);border-bottom:1px solid transparent;transition:color .2s,border-color .2s;}
+  .proj-links a:hover{color:var(--accent);border-color:var(--accent);}
+  .more-projects{margin-top:36px;text-align:center;}
+
+  /* ===== process pipeline ===== */
+  .pipeline{position:relative;padding-top:10px;}
+  .pipeline-line{
+    position:absolute;top:23px;left:0;right:0;height:2px;
+    background:var(--border);
+  }
+  .pipeline-line .flow{
+    position:absolute;top:-1px;left:0;height:4px;width:60px;border-radius:2px;
+    background:linear-gradient(90deg,transparent,var(--accent),transparent);
+    animation:flowmove 5s linear infinite;
+  }
+  @keyframes flowmove{ 0%{left:-10%;} 100%{left:100%;} }
+  .pipeline-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;position:relative;}
+  @media (max-width:860px){ .pipeline-steps{grid-template-columns:repeat(2,1fr);} .pipeline-line{display:none;} }
+  .pstep{display:flex;flex-direction:column;gap:14px;}
+  .pstep .node{
+    width:14px;height:14px;border-radius:50%;background:var(--bg);
+    border:2px solid var(--accent);box-shadow:0 0 0 5px var(--bg);
+  }
+  .pstep h3{font-size:15px;margin-bottom:6px;}
+  .pstep p{font-size:13.5px;color:var(--text-dim);}
+
+  /* ===== contact ===== */
+  .contact-box{
+    border:1px solid var(--border);border-radius:16px;
+    background:linear-gradient(135deg, rgba(37,99,235,.05) 0%, rgba(59,130,246,.08) 100%);
+    backdrop-filter:blur(10px);
+    padding:64px 48px;text-align:center;
+    position:relative;overflow:hidden;
+    box-shadow:0 10px 40px rgba(37,99,235,.08);
+  }
+  .contact-box h2{font-size:clamp(26px,4vw,40px);margin-bottom:16px;}
+  .contact-box p{color:var(--text-dim);max-width:52ch;margin:0 auto 36px;font-size:16px;line-height:1.7;}
+  .contact-methods{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:12px;}
+  .cmethod{
+    font-family:var(--font-mono);font-size:13px;color:var(--text-dim);
+    border:1px solid var(--border);border-radius:8px;padding:12px 18px;
+    display:flex;align-items:center;gap:9px;transition:all .2s ease;
+    background:var(--bg);
+  }
+  .cmethod:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);box-shadow:0 4px 12px rgba(37,99,235,.15);}
+  .cmethod .k{color:var(--accent);}
+
+  footer{padding:36px 0;text-align:center;}
+  footer p{font-family:var(--font-mono);font-size:12px;color:var(--text-faint);}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ===== experience timeline ===== */
+  .exp-timeline{display:flex;flex-direction:column;gap:48px;max-width:720px;}
+  .exp-item{
+    padding:28px;
+    border-left:3px solid var(--accent);
+    border-radius:0;
+    background:var(--bg);
+    position:relative;
+    transition:all .3s ease;
+    box-shadow:0 1px 3px rgba(0,0,0,.05);
+  }
+  .exp-item::before{
+    content:'';
+    position:absolute;
+    left:-9.5px;top:32px;
+    width:20px;height:20px;
+    border-radius:50%;
+    background:var(--bg);
+    border:3px solid var(--accent);
+    box-shadow:0 0 0 4px var(--accent-soft);
+  }
+  .exp-item:hover{box-shadow:0 8px 24px rgba(37,99,235,.15);}
+  .exp-header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:14px;}
+  .exp-header h3{font-size:18px;margin:0;}
+  .exp-date{font-family:var(--font-mono);font-size:12px;color:var(--text-faint);white-space:nowrap;}
+  @media (max-width:640px){
+    .exp-header{flex-direction:column;gap:8px;}
+  }
+
+</style>
+</head>
+<body>
+
+<div class="rail" id="rail" aria-hidden="true"></div>
+
+<header>
+  <nav>
+    <a href="#top" class="logo">
+      <svg class="logo-mark" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+        <circle cx="10" cy="10" r="3.2" fill="var(--accent)"/>
+        <circle cx="3" cy="4" r="1.6" fill="none" stroke="var(--text-faint)" stroke-width="1.2"/>
+        <circle cx="17" cy="4" r="1.6" fill="none" stroke="var(--text-faint)" stroke-width="1.2"/>
+        <circle cx="3" cy="16" r="1.6" fill="none" stroke="var(--text-faint)" stroke-width="1.2"/>
+        <line x1="10" y1="10" x2="3" y2="4" stroke="var(--border)" stroke-width="1"/>
+        <line x1="10" y1="10" x2="17" y2="4" stroke="var(--border)" stroke-width="1"/>
+        <line x1="10" y1="10" x2="3" y2="16" stroke="var(--border)" stroke-width="1"/>
+      </svg>
+      uzma
+    </a>
+    <ul class="navlinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#process">Process</a></li>
+    </ul>
+    <a href="assets/Uzma-Ahmed-Resume.pdf" download="Uzma-Ahmed-CV.pdf" class="nav-cta">Resume ↓</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="wrap hero">
+    <div>
+      <p class="eyebrow">Available for freelance &amp; entry-level roles</p>
+      <h1>Uzma Ahmed<br><span class="accent">builds systems that act.</span></h1>
+      <p class="role-line" id="roleLine">Full-Stack Developer<span class="cursor">▍</span></p>
+      <p class="lede">I design and build web products end-to-end, then wire AI agents into them that plan, decide and automate the parts that used to be manual. Fresh into the field and building in public — full-stack apps, autonomous agents, and the automation that connects them.</p>
+      <div class="cta-row">
+        <a href="#work" class="btn btn-primary">View Work ↓</a>
+        <a href="#contact" class="btn btn-ghost">Let's Talk</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="frame">
+        <div class="glow" aria-hidden="true"></div>
+        <img src="assets/uzma-photo.png" alt="Uzma Ahmed" />
+        <span class="corner tl" aria-hidden="true"></span>
+        <span class="corner br" aria-hidden="true"></span>
+        <span class="tag-chip">Karachi, PK</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="pad" id="about">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">01 · About</p>
+        <h2>Three disciplines, one workflow.</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-bio reveal">
+          <p>I'm <strong>Uzma Ahmed</strong>, a full-stack developer based in Pakistan, currently focused on <strong>agentic AI</strong> and <strong>automation</strong> — the layer that turns a static app into something that can actually get work done on its own.</p>
+          <p>My work spans building complete web products — UI, backend, database — and then extending them with AI agents that read context, make decisions, and trigger actions without someone babysitting every step.</p>
+          <p>I'm early in my career and building deliberately: shipping real projects, breaking things in public, and getting sharper with every one.</p>
+        </div>
+        <div class="capabilities reveal">
+          <div class="cap">
+            <span class="idx">FS</span>
+            <div><h3>Full-Stack Development</h3><p>End-to-end web apps — responsive interfaces, REST APIs, and databases, built to actually ship.</p></div>
+          </div>
+          <div class="cap">
+            <span class="idx">AI</span>
+            <div><h3>Agentic AI Development</h3><p>Agents that reason over context and take multi-step action, built on modern LLM tooling.</p></div>
+          </div>
+          <div class="cap">
+            <span class="idx">AU</span>
+            <div><h3>AI Automation</h3><p>Connecting apps, data and agents into workflows that remove manual, repetitive work.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="pad" id="experience">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">02 · Experience</p>
+        <h2>Where I've worked.</h2>
+      </div>
+      <div class="exp-timeline reveal">
+        <div class="exp-item">
+          <div class="exp-header">
+            <h3>AI Automation & Agent Development</h3>
+            <span class="exp-date">2024 — Present</span>
+          </div>
+          <p class="exp-role" style="color:var(--accent);font-weight:500;margin-bottom:8px;">Freelance Builder</p>
+          <p style="color:var(--text-dim);margin-bottom:16px;">Building end-to-end AI systems and agent pipelines. Shipping production-grade platforms with multi-agent orchestration, real-time streaming, and autonomous decision-making.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span class="tag">Gemini API</span>
+            <span class="tag">GPT-4o</span>
+            <span class="tag">Agent Orchestration</span>
+            <span class="tag">Next.js</span>
+            <span class="tag">FastAPI</span>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-header">
+            <h3>Full-Stack Web Development</h3>
+            <span class="exp-date">2023 — 2024</span>
+          </div>
+          <p class="exp-role" style="color:var(--accent);font-weight:500;margin-bottom:8px;">Developer</p>
+          <p style="color:var(--text-dim);margin-bottom:16px;">Built complete web applications from UI to API to database. Focused on React frontends, Node.js backends, and PostgreSQL databases. Deployed to production on Vercel and cloud platforms.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span class="tag">React</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Vercel</span>
+            <span class="tag">REST APIs</span>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-header">
+            <h3>Hackathon Competitions</h3>
+            <span class="exp-date">2023 — 2026</span>
+          </div>
+          <p class="exp-role" style="color:var(--accent);font-weight:500;margin-bottom:8px;">Competitive Developer</p>
+          <p style="color:var(--text-dim);margin-bottom:16px;">Shipped 5 production projects in GIAIC Agent Factory Hackathons. Built AI tutoring platforms, financial systems, and marketplace builders. Ranked among top submissions.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span class="tag">Full-Stack</span>
+            <span class="tag">AI Agents</span>
+            <span class="tag">Kubernetes</span>
+            <span class="tag">Cloud Native</span>
+            <span class="tag">Production Ready</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="pad" id="skills">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">03 · Toolkit</p>
+        <h2>What I build with.</h2>
+      </div>
+      <div class="skill-groups reveal">
+        <div class="skill-card">
+          <div class="label">Frontend</div>
+          <div class="tag-list">
+            <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">React</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="label">Backend</div>
+          <div class="tag-list">
+            <span class="tag">Node.js</span><span class="tag">Python</span><span class="tag">REST APIs</span><span class="tag">SQL</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="label">Agentic AI</div>
+          <div class="tag-list">
+            <span class="tag">LLM Agents</span><span class="tag">Prompt Engineering</span><span class="tag">Agent Orchestration</span><span class="tag">API Integration</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="label">Tools</div>
+          <div class="tag-list">
+            <span class="tag">Git / GitHub</span><span class="tag">Vercel</span><span class="tag">VS Code</span><span class="tag">Automation Workflows</span>
+          </div>
+        </div>
+      </div>
+      <p style="margin-top:16px;font-family:var(--font-mono);font-size:12px;color:var(--text-faint);">psst — edit these tag lists to match your exact stack before publishing.</p>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="pad" id="work">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">04 · Selected Work</p>
+        <h2>Things I've shipped.</h2>
+        <p>Full-stack web products and AI agent systems — deployed and running live.</p>
+      </div>
+
+      <!-- FULL-STACK PROJECTS -->
+      <div style="margin-bottom: 64px;">
+        <h3 style="font-family:var(--font-mono);font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);margin-bottom:28px;">Full-Stack Products</h3>
+        <div class="proj-grid reveal">
+          <div class="proj-card">
+            <div class="proj-top">
+              <h3>Ecommerce Full-Stack Platform</h3>
+              <span class="proj-tag">FULL-STACK</span>
+            </div>
+            <p>Complete B2B e-commerce marketplace — product catalog, supplier network, cart, checkout, inquiries, and multi-region sourcing built end-to-end.</p>
+            <div class="proj-stack"><span>React</span><span>·</span><span>TypeScript</span><span>·</span><span>Vite</span><span>·</span><span>TailwindCSS</span><span>·</span><span>Vercel</span></div>
+            <div class="proj-links">
+              <a href="https://ecommerce-fullstack-design-neon.vercel.app/" target="_blank" rel="noopener">Live Site ↗</a>
+              <a href="https://github.com/uzmahmed26/ecommerce-fullstack-design" target="_blank" rel="noopener">Source ↗</a>
+            </div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-top">
+              <h3>LearnFlow AI — Python Tutor</h3>
+              <span class="proj-tag">FULL-STACK</span>
+            </div>
+            <p>Production-grade AI tutoring platform for Python. Next.js dashboard with Monaco editor, exercise runner, progress charts. FastAPI backend with Dapr, PostgreSQL, Redis, Kafka. 10 deployment skills for Kubernetes automation.</p>
+            <div class="proj-stack"><span>Next.js</span><span>·</span><span>FastAPI</span><span>·</span><span>Kubernetes</span><span>·</span><span>Dapr</span><span>·</span><span>TypeScript</span></div>
+            <div class="proj-links">
+              <a href="https://giaic-hackathon-03.vercel.app/" target="_blank" rel="noopener">Live Site ↗</a>
+              <a href="https://github.com/uzmahmed26/GIAIC_Hackathon_03" target="_blank" rel="noopener">Source ↗</a>
+            </div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-top">
+              <h3>Physical AI & Robotics Course</h3>
+              <span class="proj-tag">FULL-STACK</span>
+            </div>
+            <p>Educational platform teaching embodied AI, humanoid robotics, ROS 2, Gazebo simulations, NVIDIA Isaac, and Vision-Language-Action models for the next generation of AI.</p>
+            <div class="proj-stack"><span>Next.js</span><span>·</span><span>Docusaurus</span><span>·</span><span>React</span><span>·</span><span>TypeScript</span></div>
+            <div class="proj-links">
+              <a href="https://speckit-plus-hackathon.vercel.app/" target="_blank" rel="noopener">Live Site ↗</a>
+            </div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-top">
+              <h3>Course Companion FTE</h3>
+              <span class="proj-tag">FULL-STACK</span>
+            </div>
+            <p>24/7 AI tutor for Agent Development — 3-phase platform from zero-backend ChatGPT app to full Next.js web app. 10-chapter curriculum, freemium tiers, PostgreSQL, Claude Sonnet, deployed on Vercel & Fly.io.</p>
+            <div class="proj-stack"><span>Next.js</span><span>·</span><span>FastAPI</span><span>·</span><span>PostgreSQL</span><span>·</span><span>Claude Sonnet</span><span>·</span><span>TypeScript</span></div>
+            <div class="proj-links">
+              <a href="https://giaic-hack-04.vercel.app/" target="_blank" rel="noopener">Live Site ↗</a>
+              <a href="https://github.com/uzmahmed26/GIAIC_Hack_04" target="_blank" rel="noopener">Source ↗</a>
+            </div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-top">
+              <h3>Marketplace Builder (Hackathon)</h3>
+              <span class="proj-tag">FULL-STACK</span>
+            </div>
+            <p>Q2 marketplace builder platform enabling rapid deployment of multi-vendor e-commerce stores with inventory, orders, and supplier management.</p>
+            <div class="proj-stack"><span>React</span><span>·</span><span>Node.js</span><span>·</span><span>Database</span><span>·</span><span>Auth</span></div>
+            <div class="proj-links">
+              <a href="https://q2-marketplace-builder-hackathon-2025.vercel.app/" target="_blank" rel="noopener">Live Site ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI AGENT PROJECTS -->
+      <div>
+        <h3 style="font-family:var(--font-mono);font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);margin-bottom:28px;">Agentic AI Systems</h3>
+        <div class="proj-grid reveal">
+          <div class="proj-card">
+            <div class="proj-top">
+              <h3>TechCorp Customer Success AI</h3>
+              <span class="proj-tag">AGENTIC AI</span>
+            </div>
+            <p>24/7 AI-powered customer support agent — multi-channel (Web Form, Gmail, WhatsApp). GPT-4o reasoning with 81% auto-resolve rate, sentiment analysis, knowledge retrieval, and intelligent escalation to humans.</p>
+            <div class="proj-stack"><span>GPT-4o</span><span>·</span><span>FastAPI</span><span>·</span><span>PostgreSQL</span><span>·</span><span>Redis</span><span>·</span><span>Kafka</span></div>
+            <div class="proj-links">
+              <a href="https://web-form-olive.vercel.app/" target="_blank" rel="noopener">Live App ↗</a>
+              <a href="https://github.com/uzmahmed26/Hackathon-05" target="_blank" rel="noopener">Source ↗</a>
+            </div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-top">
+              <h3>Smart Todo AI Assistant</h3>
+              <span class="proj-tag">AGENTIC AI</span>
+            </div>
+            <p>AI-powered task management chatbot with GPT-4 reasoning. Accepts natural language input, supports 5 languages (English, Urdu, Arabic, Chinese, Turkish), voice commands, and recurring tasks.</p>
+            <div class="proj-stack"><span>React</span><span>·</span><span>GPT-4</span><span>·</span><span>Web Speech API</span><span>·</span><span>Node.js</span></div>
+            <div class="proj-links">
+              <a href="https://ai-powered-todo-chatbot-liart.vercel.app/" target="_blank" rel="noopener">Live App ↗</a>
+            </div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-top">
+              <h3>HoshiarAI — Financial Guardian</h3>
+              <span class="proj-tag">AGENTIC AI</span>
+            </div>
+            <p>Pakistan's autonomous financial intelligence system. 5-agent orchestration pipeline (Google Gemini) that ingests multi-source data, detects scams in real-time, analyzes market impact, and recommends actions with full audit trails.</p>
+            <div class="proj-stack"><span>Gemini 2.0</span><span>·</span><span>5-Agent Pipeline</span><span>·</span><span>SSE Streaming</span><span>·</span><span>PWA</span></div>
+            <div class="proj-links">
+              <a href="https://ai-financial-guardian-two.vercel.app/" target="_blank" rel="noopener">Live App ↗</a>
+              <a href="https://github.com/uzmahmed26/Hoshiyar_Ai" target="_blank" rel="noopener">Source ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="more-projects reveal" style="margin-top:48px;">
+        <a href="https://github.com/uzmahmed26?tab=repositories" target="_blank" rel="noopener" class="btn btn-ghost">See all repositories on GitHub ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="pad" id="process">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">05 · How I Work</p>
+        <h2>From idea to running system.</h2>
+      </div>
+      <div class="pipeline reveal">
+        <div class="pipeline-line"><div class="flow"></div></div>
+        <div class="pipeline-steps">
+          <div class="pstep"><div class="node"></div><h3>Understand</h3><p>Get clear on the real problem and what "done" looks like.</p></div>
+          <div class="pstep"><div class="node"></div><h3>Architect</h3><p>Plan the stack — UI, data, and where an agent fits in.</p></div>
+          <div class="pstep"><div class="node"></div><h3>Build</h3><p>Ship the full-stack app, iterating in small, working pieces.</p></div>
+          <div class="pstep"><div class="node"></div><h3>Automate</h3><p>Wire in agents and workflows to remove the manual steps.</p></div>
+          <div class="pstep"><div class="node"></div><h3>Ship</h3><p>Deploy, test in the real world, and keep refining.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="pad" id="contact">
+    <div class="wrap">
+      <div class="contact-box reveal">
+        <p class="eyebrow" style="justify-content:center;">06 · Get in touch</p>
+        <h2>Let's build something that works on its own.</h2>
+        <p>Open to freelance projects and entry-level full-stack / AI automation roles. Reach out — I reply fast.</p>
+        <div class="contact-methods">
+          <a class="cmethod" href="mailto:uzmahmed26@yahoo.com"><span class="k">✉</span> uzmahmed26@yahoo.com</a>
+          <a class="cmethod" href="tel:+923322236597"><span class="k">☎</span> +92 332 2236597</a>
+          <a class="cmethod" href="https://www.linkedin.com/in/uzma-ahmed-3557402ba/" target="_blank" rel="noopener"><span class="k">in</span> LinkedIn</a>
+          <a class="cmethod" href="https://github.com/uzmahmed26" target="_blank" rel="noopener"><span class="k">gh</span> GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 Uzma Ahmed · Built with HTML, CSS &amp; a bit of agentic thinking.</p>
+</footer>
+
+<script>
+  // Rotating role line
+  const roles = ["Full-Stack Developer", "Agentic AI Developer", "AI Automation Developer"];
+  let ri = 0, ci = 0, deleting = false;
+  const roleEl = document.getElementById('roleLine');
+  const cursor = '<span class="cursor">▍</span>';
+  function tick(){
+    const word = roles[ri];
+    if(!deleting){
+      ci++;
+      roleEl.innerHTML = word.slice(0,ci) + cursor;
+      if(ci === word.length){ deleting = true; setTimeout(tick, 1400); return; }
+    } else {
+      ci--;
+      roleEl.innerHTML = word.slice(0,ci) + cursor;
+      if(ci === 0){ deleting = false; ri = (ri+1) % roles.length; }
+    }
+    setTimeout(tick, deleting ? 35 : 65);
+  }
+  tick();
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.12});
+  revealEls.forEach(el=>io.observe(el));
+
+  // Signal rail: build nodes aligned to sections, activate on scroll
+  const rail = document.getElementById('rail');
+  const sections = document.querySelectorAll('section[id]');
+  if(rail){
+    sections.forEach(()=>{
+      const n = document.createElement('div');
+      n.className = 'node';
+      rail.appendChild(n);
+    });
+    const pulse = document.createElement('div');
+    pulse.className = 'pulse';
+    rail.appendChild(pulse);
+
+    function layoutNodes(){
+      const nodes = rail.querySelectorAll('.node');
+      nodes.forEach((n,i)=>{
+        const sec = sections[i];
+        const rect = sec.getBoundingClientRect();
+        const top = rect.top + window.scrollY + rect.height/2;
+        n.style.top = top + 'px';
+      });
+    }
+    layoutNodes();
+    window.addEventListener('resize', layoutNodes);
+
+    function updateActive(){
+      const nodes = rail.querySelectorAll('.node');
+      const mid = window.scrollY + window.innerHeight/2;
+      let closest = 0, closestDist = Infinity;
+      sections.forEach((sec,i)=>{
+        const rect = sec.getBoundingClientRect();
+        const top = rect.top + window.scrollY + rect.height/2;
+        const d = Math.abs(top - mid);
+        if(d < closestDist){ closestDist = d; closest = i; }
+      });
+      nodes.forEach((n,i)=> n.classList.toggle('active', i===closest));
+    }
+    updateActive();
+    window.addEventListener('scroll', updateActive, {passive:true});
+  }
+</script>
+
+</body>
+</html>
